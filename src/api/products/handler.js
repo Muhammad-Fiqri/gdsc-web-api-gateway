@@ -14,7 +14,14 @@ class ProductsHandler {
 
   async addProductHandler(request, h) {
     // Live Code with Aisyah
-
+    try{
+      const comment = this._commentsService.post('/%{productId}/user/{userId}', request.payload);
+      return h.response(
+        comment.data
+      ).code(201)
+    }catch(error){
+      errorCheck(error)
+    }
   }
 
   async getProductsHandler(request, h) {

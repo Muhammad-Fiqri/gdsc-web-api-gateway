@@ -12,9 +12,9 @@ class CommentsHandler {
   async addCommentHandler(request, h) {
     // Live Code with Nurhuda
     try{
-      const user = this._usersService.post('/%{productId}/user/{userId}', request.payload);
+      const comment = this._commentsService.post('/%{productId}/user/{userId}', request.payload);
       return h.response(
-        users.data
+        comment.data
       ).code(201)
     }catch(error){
       errorCheck(error)
@@ -24,9 +24,9 @@ class CommentsHandler {
   async getCommentsByIdHandler(request, h) {
     // Live Code with Nurhuda
     try{
-      const user = this._usersService.get('/%{productId}', request.payload);
+      const comment = this._commentsService.get('/%{productId}', request.payload);
       return h.response(
-        users.data
+        comment.data
       ).code(201)
     }catch(error){
       errorCheck(error)
@@ -36,9 +36,9 @@ class CommentsHandler {
   async deleteCommentByIdHandler(request, h) {
     // Live Code with Nurhuda
     try{
-      const user = this._usersService.delete('/%{commentId}', request.payload);
+      const ucomment = this._commentsService.delete('/%{commentId}', request.payload);
       return h.response(
-        users.data
+        comment.data
       ).code(201)
     }catch(error){
       errorCheck(error)
