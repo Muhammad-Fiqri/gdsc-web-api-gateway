@@ -71,7 +71,35 @@ const init = async () => {
 
   // Live Code with Faishal
   await server.register([
-
+    {
+      plugin: users,
+      options: {
+        usersService,
+      },
+      routes: {
+        prefix: '/users'
+      },
+    },
+    {
+      plugin: products,
+      options: {
+        usersService,
+        productsService,
+        commentsService
+      },
+      routes: {
+        prefix: '/users'
+      },
+    },
+    {
+      plugin: comments,
+      options: {
+        commentsService,
+      },
+      routes: {
+        prefix: '/comments'
+      },
+    },
   ]);
 
   await server.start();

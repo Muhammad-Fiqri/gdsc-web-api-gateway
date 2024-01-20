@@ -11,36 +11,39 @@ class CommentsHandler {
 
   async addCommentHandler(request, h) {
     // Live Code with Nurhuda
-    try{
-      const comment = this._commentsService.post('/%{productId}/user/{userId}', request.payload);
+    try {
+      const users = this._commentsService.post(`/${productId}/user/${userId}`, request.payload);
+
       return h.response(
-        comment.data
+        users.data
       ).code(201)
-    }catch(error){
+    } catch (error) {
       errorCheck(error)
     }
   }
 
   async getCommentsByIdHandler(request, h) {
     // Live Code with Nurhuda
-    try{
-      const comment = this._commentsService.get('/%{productId}', request.payload);
+    try {
+      const users = this._commentsService.get(`/${productId}`, request.payload);
+
       return h.response(
-        comment.data
+        users.data
       ).code(201)
-    }catch(error){
+    } catch (error) {
       errorCheck(error)
     }
   }
 
   async deleteCommentByIdHandler(request, h) {
     // Live Code with Nurhuda
-    try{
-      const ucomment = this._commentsService.delete('/%{commentId}', request.payload);
+    try {
+      const users = this._commentsService.delete(`/${productId}`, request.payload);
+
       return h.response(
-        comment.data
+        users.data
       ).code(201)
-    }catch(error){
+    } catch (error) {
       errorCheck(error)
     }
   }
