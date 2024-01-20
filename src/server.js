@@ -88,7 +88,7 @@ const init = async () => {
         commentsService
       },
       routes: {
-        prefix: '/users'
+        prefix: '/products'
       },
     },
     {

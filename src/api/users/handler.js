@@ -12,52 +12,54 @@ class UsersHandler {
 
   // Register
   async addUserHandler(request, h) {
-    // Live Code with  Nurhuda
-    try{
-      const user = this._usersService.post('/', request.payload);
+    try {
+      const users = await this._usersService.post(`/`, request.payload);
+
       return h.response(
         users.data
-      ).code(201)
-    }catch(error){
-      errorCheck(error)
+      ).code(201);
+    } catch (error) {
+      errorCheck(error);
     }
   }
 
   async getUserByIdHandler(request, h) {
-    // Live Code with Nurhuda
-    try{
-      const {id} = request.param;
-      const user = this._usersService.get('/${id}', request.payload);
+    const { id } = request.params;
+    try {
+      const users = await this._usersService.get(`/${id}`);
+
       return h.response(
         users.data
-      ).code(201)
-    }catch(error){
-        errorCheck(error)
+      ).code(200);
+    } catch (error) {
+      errorCheck(error);
+      console.log(error);
     }
   }
 
   async deleteUserByIdHandler(request, h) {
-    // Live Code with Nurhuda
-    try{
-      const {id} = request.param;
-      const user = this._usersService.delete('/${id}', request.payload);
+    const { id } = request.params;
+    try {
+      const users = await this._usersService.delete(`/${id}`);
+
       return h.response(
         users.data
-      ).code(201)
-    }catch(error){
-        errorCheck(error)
+      ).code(200);
+    } catch (error) {
+      errorCheck(error);
     }
   }
 
   async getUsersHandler(request, h) {
-    // Live Code with Nurhuda
-    try{
-      const user = this._usersService.get('/', request.payload);
+    try {
+      const users = await this._usersService.get(`/`);
+
       return h.response(
         users.data
-      ).code(201)
-    }catch(error){
-      errorCheck(error)
+      ).code(200);
+    } catch (error) {
+      console.log(error);
+      errorCheck(error);
     }
   }
 }
